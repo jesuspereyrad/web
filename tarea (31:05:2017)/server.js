@@ -15,7 +15,7 @@ const server = net.createServer((socket) => {
 
 // grab an arbitrary unused port.
 server.listen(5331,() => {
-  console.log('opened server on port 8080');
+  console.log('opened server on port 5331');
 });
 
 // server.connect()
