@@ -9,12 +9,12 @@ const server = net.createServer((socket) => {
   // handle errors here
   throw err;
 });
-  socket.write("HTTP/1.1 200 OK \n\n OK");
+  socket.write("HTTP/1.1 200 OK");
   socket.end();
 });
 
 // grab an arbitrary unused port.
-server.listen(8080,() => {
+server.listen(5331,() => {
   console.log('opened server on port 8080');
 });
 
