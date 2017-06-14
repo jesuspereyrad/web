@@ -2,6 +2,7 @@ body {
   margin: 0;
 }
 
+/*nav style*/
 .topbar ul {
   list-style-type: none;
   margin: 0;
@@ -34,8 +35,53 @@ body {
   background-color: #4CAF50;
 }
 
+
+/*Footer style*/
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  background-color: #333;
+  text-align: center;
+}
+
+.footer > ul {
+  list-style-type: none;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.footer > ul > li {
+  display: inline-block;
+  /*float: left;*/
+  color: #fff;
+  height: auto;
+}
+
+.footer > ul > li > a {
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 16px;
+  display: block;
+}
+
+.footer ul > li > a:hover {
+  background-color: #111;
+}
+
 @media only screen and (max-width: 600px) {
   .topbar ul > li {
     float: none;
   }
+
+  .footer > ul > li {
+    display: block;
+  }
 }
+
+
+
