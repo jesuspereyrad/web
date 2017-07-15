@@ -28,6 +28,21 @@ app.get("/team", function (req, res) {
   res.render("team");
 });
 
+app.get("/pizza", function (req, res) {
+  res.render("pizza");
+});
+
+app.get("/re_order", function (req, res) {
+  res.render("reorder");
+});
+
+app.get("/new_order", function (req, res) {
+  res.render("neworder");
+});
+
+app.get("/order", function (req, res) {
+  res.render("order");
+});
 
 app.listen(5331, function () {
   console.log("Server listen on port 5331");
