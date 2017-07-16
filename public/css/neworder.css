@@ -1,0 +1,46 @@
+/*New Order Style*/
+
+#new_order .jumbotron {
+  min-height: 90vh !important;
+}
+
+#new_order .jumbotron .center {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#new_order .jumbotron .center h2{
+  margin-bottom: 10%;
+}
+
+
+
+#new_order .jumbotron .center .box .item .image.active {
+  border: 5px solid red;
+}
+
+/*#new_order .jumbotron .center .box {
+  text-align: center;
+  border-radius: 50%;
+}*/
+
+#new_order .jumbotron .center .box .item h3 {
+  align-content: : flex-start;
+}
+
+#new_order .jumbotron .center .box .item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+#new_order .jumbotron .center .box .item .image {
+  /*width: 100%;*/
+  border-radius: 50%;
+}
