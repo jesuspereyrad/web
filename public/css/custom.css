@@ -1,5 +1,9 @@
-/*body {
+body {
   margin: 0;
+}
+
+.jumbotron {
+  text-align: center;
 }
 
 .topbar ul {
@@ -40,7 +44,7 @@
 .footer {
   position: absolute;
   right: 0;
-  bottom: 0;
+  /*bottom: 0;*/
   left: 0;
   padding: 1em;
   background-color: #333;
@@ -114,9 +118,3 @@
   background-color: green;
 }
 
-
-
-
-
-
-*/

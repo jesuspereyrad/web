@@ -1,0 +1,45 @@
+/*Pizza Style*/
+
+/*#pizza .table th:first-child,
+#pizza .table td:first-child{
+  width: 15%;
+}
+
+#pizza .table th:nth-child(2),
+#pizza .table td:nth-child(2) {
+  width: 50%;
+}
+
+#pizza .table th:nth-child(3),
+#pizza .table td:nth-child(3) {
+  width: 20%;
+}
+
+#pizza .table th:nth-child(4),
+#pizza .table th:nth-child(4) {
+  width: 15%;
+}*/
+
+#pizza .table tr {
+  display: flex;
+  width: 100%;
+  /*justify-content: space-between;*/
+  align-items: center;
+  border-top: 2px solid #ccc;
+}
+
+#pizza .table tr td{
+  border: 0;
+}
+
+#pizza .table .image {
+  width: 125px;
+  height: 125px;
+  border: 5px solid #ddd;
+  border-radius: 50%;
+}
+
+#pizza .table th,
+#pizza .table td {
+  text-align: center;
+}
