@@ -1,19 +1,51 @@
 /*New Order Style*/
 
 #new_order .jumbotron {
-  min-height: 90vh !important;
+  min-height: 70vh !important;
+  background-color: #fff;
+  margin-top: 10px;
+}
+
+#new_order .jumbotron > .box {
+  border: 2px solid #ccc;
+  border-top: 0;
+  box-shadow: 10px 10px 5px #888888;
 }
 
 #new_order .jumbotron .center {
   width: 100%;
-  min-height: 80vh;
+  min-height: 60vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
+#new_order .jumbotron ul {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+}
+
+#new_order .jumbotron ul li {
+  width: 100%;
+}
+
+#new_order .jumbotron ul li a {
+  color: #c11111;
+}
+
+#new_order .jumbotron ul .active {
+  width: 100%;
+  background-color: red;
+  border-radius: 20px;
+  border: 1px solid #c11111;
+  color: #fff;
+}
+
 #new_order .jumbotron .center h2{
-  margin-bottom: 10%;
+  margin-bottom: 3%;
+  width: auto;
 }
 
 

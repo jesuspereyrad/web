@@ -1,60 +1,74 @@
 <!-- CREATE ORDER PATH -->
 <div id="new_order">
 <!-- GUIDE JUMBOTRON -->
+  
+  <div class="jumbotron col-10 offset-1">
+    <div class="box">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#ready" role="tab">Ready</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#size" role="tab">Size</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#crust" role="tab">Crust</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#topping" role="tab">Toppings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#review" role="tab">Review</a>
+        </li>
+      </ul>
 
-  <div class="jumbotron">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div class="tab-pane active" id="ready" role="tabpanel">
           <div class="center">
-            <h1>Make Your Own Pizza</h1>
-            <h4>Are you ready to make your pizza</h4>
-            <div class="col-6 offset-3 col-md-4 offset-md-4">
-              <a href="" class="btn btn-md btn-danger">I am ready!</a>
+            <h1>Are your ready to create your own pizza</h1>
+            <h4>Click the button when you are ready!</h4>
+            <div class="col-6 col-md-4 offset-md-4 offset-3">
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-md">Ready</button>
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="col-10 offset-1">
-            <div class="center">
-              <h2>Select a Size</h2>
-              <div class="row box">
-                <div class="col-12 col-md-3">
-                  <h3>X Large</h3>
-                  <div class="item col-12">
-                    <img class="image img-fluid active" src="https://www.placehold.it/300x300">
-                  </div>
+        <div class="tab-pane" id="size" role="tabpanel">
+          <div class="center">
+            <h2>Select a Size</h2>
+            <div class="row box">
+              <div class="col-12 col-md-3">
+                <h3>X Large</h3>
+                <div class="item col-12">
+                  <img class="image img-fluid active" src="https://www.placehold.it/300x300">
                 </div>
-                <div class="col-12 col-md-3">
-                <h3>Large</h3>
-                  <div class="item col-10">
-                    <img class="image img-fluid" src="https://www.placehold.it/300x300">
-                  </div>
+              </div>
+              <div class="col-12 col-md-3">
+              <h3>Large</h3>
+                <div class="item col-10">
+                  <img class="image img-fluid" src="https://www.placehold.it/300x300">
                 </div>
-                <div class="col-12 col-md-3">
-                <h3>Medium</h3>
-                  <div class="item col-8">
-                    <img class="image img-fluid" src="https://www.placehold.it/300x300">
-                  </div>
+              </div>
+              <div class="col-12 col-md-3">
+              <h3>Medium</h3>
+                <div class="item col-8">
+                  <img class="image img-fluid" src="https://www.placehold.it/300x300">
                 </div>
-                <div class="col-12 col-md-3">
-                  <h3>Small</h3>
-                  <div class="item col-6">
-                    <img class="image img-fluid" src="https://www.placehold.it/300x300">
-                  </div>
+              </div>
+              <div class="col-12 col-md-3">
+                <h3>Small</h3>
+                <div class="item col-6">
+                  <img class="image img-fluid" src="https://www.placehold.it/300x300">
                 </div>
               </div>
             </div>
           </div>
+  <!--         <div class="col-6 col-md-4 offset-md-8">
+            <a href="#crust" class="btn btn-lg btn-danger">Next</a>
+          </div> -->
         </div>
-        <div class="carousel-item">
+        <div class="tab-pane" id="crust" role="tabpanel">
           <div class="center">
             <h2>Select Crust</h2>
             <div>
@@ -81,7 +95,7 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item">
+        <div class="tab-pane" id="topping" role="tabpanel">
           <div class="center">
             <h2>Select Topping</h2>
             <form>
@@ -128,7 +142,7 @@
             </form>
           </div>
         </div>
-        <div class="carousel-item">
+        <div class="tab-pane" id="review" role="tabpanel">
           <div class="center">
             <h2>Review Order</h2>
             <h4>Size</h4>
@@ -140,15 +154,9 @@
           </div>
         </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
   </div>
-
 </div>
+
+<!-- Login MODAL -->
+{{> logInModal}}
