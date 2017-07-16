@@ -32,6 +32,10 @@ app.get("/pizza", function (req, res) {
   res.render("pizza");
 });
 
+app.get("/deals", function (req, res) {
+  res.render("deals");
+});
+
 app.get("/re_order", function (req, res) {
   res.render("reorder");
 });
