@@ -25,3 +25,21 @@
 #deals .table td {
   text-align: center;
 }
+
+
+@media only screen and (max-width: 500px) {
+  #deals .table thead,
+  #deals .table tbody {
+    display: table-header-group !important;
+  }
+}
+
+
+#deals .table thead,
+#deals .table tbody {
+  display: flex;
+}
+
+#deals .table tbody {
+  flex-direction: column;
+}

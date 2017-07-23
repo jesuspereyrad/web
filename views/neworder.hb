@@ -3,63 +3,78 @@
 <!-- GUIDE JUMBOTRON -->
   
   <div class="jumbotron col-10 offset-1">
+  <div class="alert alert-success" role="alert">
+    <strong>Well done!</strong> You are Logged In.
+  </div>
+
     <div class="box">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#ready" role="tab">Ready</a>
+          <a class="nav-link active" data-toggle="tab" href="#readyTab" role="tab">Ready</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#size" role="tab">Size</a>
+          <a class="nav-link" data-toggle="tab" href="#sizeTab" role="tab">Size</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#crust" role="tab">Crust</a>
+          <a class="nav-link" data-toggle="tab" href="#sauceTab" role="tab">Sauce</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#topping" role="tab">Toppings</a>
+          <a class="nav-link" data-toggle="tab" href="#crustTab" role="tab">Crust</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#review" role="tab">Review</a>
+          <a class="nav-link" data-toggle="tab" href="#toppingTab" role="tab">Toppings</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#reviewTab" role="tab" onclick="populateTable();">Review</a>
         </li>
       </ul>
 
       <!-- Tab panes -->
       <div class="tab-content">
-        <div class="tab-pane active" id="ready" role="tabpanel">
+        <div class="tab-pane active" id="readyTab" role="tabpanel">
           <div class="center">
             <h1>Are your ready to create your own pizza</h1>
             <h4>Click the button when you are ready!</h4>
+            <div class="col-6 offset-3">
+              <input type="text" name="title" id="pizzaTitle" class="form-control" placeholder="Name your pizza!" />
+              <button type="button" id="next" class="btn btn-primary">Next</button>
+            </div>
             <div class="col-6 col-md-4 offset-md-4 offset-3">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-md">Ready</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".logInModal">Ready</button>
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="size" role="tabpanel">
+        <div class="tab-pane" id="sizeTab" role="tabpanel">
           <div class="center">
             <h2>Select a Size</h2>
             <div class="row box">
-              <div class="col-12 col-md-3">
-                <h3>X Large</h3>
+              <div onclick="selectSize(this)" value="20.00" class="col-12 col-md-3 size">
+                <h2>X Large</h2>
+                <h3>$20.00</h3>
                 <div class="item col-12">
-                  <img class="image img-fluid active" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid activeImage" id="xLarge" src="https://www.placehold.it/300x300">
                 </div>
               </div>
-              <div class="col-12 col-md-3">
-              <h3>Large</h3>
+              <div onclick="selectSize(this)" value="15.00" class="col-12 col-md-3 size">
+                <h2>Large</h2>
+                <h3>$15.00</h3>
                 <div class="item col-10">
-                  <img class="image img-fluid" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid" id="large" src="https://www.placehold.it/300x300">
                 </div>
               </div>
-              <div class="col-12 col-md-3">
-              <h3>Medium</h3>
+              <div onclick="selectSize(this)" value="13.00" class="col-12 col-md-3 size">
+                <h2>Medium</h2>
+                <h3>$13.00</h3>
                 <div class="item col-8">
-                  <img class="image img-fluid" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid" id="medium" src="https://www.placehold.it/300x300">
                 </div>
               </div>
-              <div class="col-12 col-md-3">
-                <h3>Small</h3>
+              <div onclick="selectSize(this)" value="10.00" class="col-12 col-md-3 size">
+                <h2>Small</h2>
+                <h3>$10.00</h3>
                 <div class="item col-6">
-                  <img class="image img-fluid" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid" id="small" src="https://www.placehold.it/300x300">
                 </div>
               </div>
             </div>
@@ -68,34 +83,27 @@
             <a href="#crust" class="btn btn-lg btn-danger">Next</a>
           </div> -->
         </div>
-        <div class="tab-pane" id="crust" role="tabpanel">
+        <div class="tab-pane" id="sauceTab" role="tabpanel">
           <div class="center">
-            <h2>Select Crust</h2>
-            <div>
-              <div class="card-deck">
-                <div class="card">
-                  <div class="card-block">
-                    <h4 class="card-title">Crust title</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block">
-                    <h4 class="card-title">Crust title</h4>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-block">
-                    <h4 class="card-title">Crust title</h4>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                  </div>
-                </div>
+            <h2>Select Sauce</h2>
+            <div class="container">
+              <div class="card-deck" id="sauce">
+                
               </div>
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="topping" role="tabpanel">
+        <div class="tab-pane" id="crustTab" role="tabpanel">
+          <div class="center">
+            <h2>Select Crust</h2>
+            <div class="container">
+              <div class="card-deck" id="crust">
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane" id="toppingTab" role="tabpanel">
           <div class="center">
             <h2>Select Topping</h2>
             <form>
@@ -103,37 +111,23 @@
                 <div class="row">
                   <div class="col-12 col-md-4">
                     <div class="form-group">
-                      <label for="exampleSelect2">Cheese</label>
-                      <select multiple class="form-control" id="exampleSelect2">
-                        <option>Provolone</option>
-                        <option>Parmesan</option>
-                        <option>Suize</option>
-                        <option>Gouda</option>
-                        <option>Mozarella</option>
+                      <label for="cheese">Cheese</label>
+                      <select multiple class="form-control" id="cheese">
+                        
                       </select>
                     </div>
                   </div>
                   <div class="col-12 col-md-4">
                     <div class="form-group">
-                      <label for="exampleSelect2">Meat</label>
-                      <select multiple class="form-control" id="exampleSelect2">
-                        <option>Provolone</option>
-                        <option>Parmesan</option>
-                        <option>Suize</option>
-                        <option>Gouda</option>
-                        <option>Mozarella</option>
+                      <label for="meat">Meat</label>
+                      <select multiple class="form-control" id="meat">
                       </select>
                     </div>
                   </div>
                   <div class="col-12 col-md-4">
                     <div class="form-group">
-                      <label for="exampleSelect2">Vegetable</label>
-                      <select multiple class="form-control" id="exampleSelect2">
-                        <option>Provolone</option>
-                        <option>Parmesan</option>
-                        <option>Suize</option>
-                        <option>Gouda</option>
-                        <option>Mozarella</option>
+                      <label for="vegetable">Vegetable</label>
+                      <select multiple class="form-control" id="vegetable">
                       </select>
                     </div>
                   </div>
@@ -142,16 +136,20 @@
             </form>
           </div>
         </div>
-        <div class="tab-pane" id="review" role="tabpanel">
-          <div class="center">
-            <h2>Review Order</h2>
-            <h4>Size</h4>
-            <h4>Crust</h4>
-            <h4>Toppings</h4>
-            <div class="col-6 col-sm-4 offset-4">
-              <a href="" class="btn btn-sm btn-primary">Order now!</a>
-            </div>
-          </div>
+        <div class="tab-pane" id="reviewTab" role="tabpanel">
+        <div class="container">
+          <table class="table">
+            <thead class="thead-default">
+              <tr class="row col-12">
+                <th class="col-12" style="text-align: center" id="PizzaTitleDescription"></th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              
+            </tbody>
+          </table>
+            <input type='submit' onclick="return(submitPizza(event));" class='btn btn-primary col-6 col-md-3 offset-md-9'/>
+          </form>
         </div>
       </div>
     </div>
@@ -160,3 +158,159 @@
 
 <!-- Login MODAL -->
 {{> logInModal}}
+
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+<script>
+  var formData = new FormData();
+  var pizza = {};
+  var order = {};
+  pizza.type = 'USER';
+  var getRequest = function(method, father, url, func) {
+    var client = new XMLHttpRequest();
+    client.onreadystatechange = function() {
+      if(client.readyState === 4) {
+        var clientjs = JSON.parse(client.responseText);
+        var string = "";
+        clientjs.forEach(function (element) {
+          string += func(element);
+        })
+        if(document.getElementById(father) != null) {
+          document.getElementById(father).innerHTML = string;
+        }
+        else {
+          (document.getElementsByClassName(father))[0].innerHTML = string;
+        }
+      }
+    }
+    client.open(method, url);
+    client.send();
+  }
+
+  var option = function(element) {
+    console.log(element.name);
+    return ("<option value=" + element._id + " name=' "+ element.name + " '>" + element.name + "</option>");
+  }
+
+  var card = function(element) {
+    console.log(element.name);
+    return "<div class='card' onclick='select(this)' id='" + element._id + "' name='"+ element.name + "' style='width:20%;'><img class='card-img-top' 'src='" + element.url + " alt='Card image cap'/> <div class='card-block'><h4 class='card-title'>" + element.name + "</h4> <p class='card-text'>" + element.description + "</p></div></div>"
+  }
+
+  getRequest("get", "cheese", "http://localhost:5331/DB/toppings/CHEESE", option);
+  getRequest("get", "meat", "http://localhost:5331/DB/toppings/MEAT", option);
+  getRequest("get", "vegetable", "http://localhost:5331/DB/toppings/VEGETABLE", option);
+  getRequest("get", "crust", "http://localhost:5331/DB/ingredients/CRUST", card);
+  getRequest("get", "sauce", "http://localhost:5331/DB/ingredients/SAUCE", card);
+
+  var selectSize = function(element, active) {
+    var active = document.getElementsByClassName("activeImage");
+    active[0].classList.remove('activeImage');
+    var test = element.getElementsByClassName("image")[0];
+    test.classList.add("activeImage");
+    pizza.size = ({
+      type: "size",
+      value: element.getAttribute("value"),
+      name: test.id
+    });
+    order.size = test.id;
+    order.value = element.getAttribute("value");
+  }
+  var select = function(element) {
+    var father = element.parentElement.id;
+    // console.log(document.getElementsByClassName("activeSelect"))
+    if(document.getElementsByClassName(father + "active").length == 1) {
+      var active = document.getElementsByClassName(father+"active");
+      active[0].classList.remove(father+'active');
+    }
+    element.classList.add(father+"active");
+    pizza[father] = ({
+      type: "ingredient",
+      _id: element.id,
+      name: element.getAttribute("name")
+    });
+  };
+
+  var getValues = function(topping) {
+    var topping = document.getElementById(topping);
+    var item = [];
+    var name = [];
+    for (var i = 0; i < topping.length; i++) {
+      if (topping.options[i].selected) {
+        item.push(topping.options[i].value);
+        name.push(topping.options[i].text);
+      };
+    };
+
+    pizza[topping.id] =  ({
+      type: "topping",
+      _id: item,
+      name: name
+    });
+  }
+
+  var populateTable = function() {
+    pizza.title =  document.getElementById("pizzaTitle").value;
+    document.getElementById("PizzaTitleDescription").innerHTML = pizza.title;
+    getValues("cheese");
+    getValues("meat");
+    getValues("vegetable");
+    extra = pizza["meat"].name.length + pizza["vegetable"].name.length + pizza["cheese"].name.length;
+    console.log(extra);
+    order.price = Number((pizza["size"].value));
+    console.log(pizza);
+    var string = " ";
+    Object.keys(pizza).forEach(function(key,index) {
+      if(pizza[key].name && pizza[key].name.length > 0) {
+        string += "<tr class='row col-12'><td class='col-6'>" + key + "</td><td class='col-6'>" + pizza[key].name + "</td></tr>"
+      }
+    });
+    string += "<tr class='row col-12'><td class='col-6'> Size </td><td class='col-6'>" + pizza["size"].value + "</td></tr>"
+    if(extra > 3) {5
+      var extraPrice = Number((extra - 3) * 2);
+      order.price += extraPrice;
+      string += "<tr class='row col-12'><td class='col-6'> Extra topping </td><td class='col-6'>$" + extraPrice.toFixed(2) + "</td></tr>"
+    }
+    string += "<tr class='row col-12'><td class='col-6'> Total </td><td class='col-6'>$" + (order.price.toFixed(2)) + "</td></tr>"
+    document.getElementById("tableBody").innerHTML = string;
+  }
+
+function submitPizza(e)
+  {
+    e.preventDefault();
+    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+    xmlhttp.open("POST", "/db/pizza");
+    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xmlhttp.send(JSON.stringify(pizza));
+    xmlhttp.onreadystatechange = function() {
+      if(xmlhttp.readyState === 4) {
+        pizza._id =  JSON.parse(xmlhttp.responseText);
+        order.pizza = pizza._id;
+        order.status = ['ACTIVE'];
+        submitOrder();
+      }
+    }
+    return false;
+  }
+
+function submitOrder() {
+  var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+  xmlhttp.open("POST", "/db/order");
+  xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  xmlhttp.send(JSON.stringify(order));
+}
+</script>
+
+<script> 
+  $("#next").click(function(e) {
+    e.preventDefault();
+    $(".nav-link.active").removeClass("active");
+    $(".tab-pane.active").removeClass("active").hide();
+    var next = $('#sizeTab').tab('show');
+    $("a[href='#sizeTab'").addClass("active");
+    next.children().addClass("active");
+    return false;
+  })
+</script>

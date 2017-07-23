@@ -7,8 +7,10 @@
   <link rel="stylesheet" type="text/css" href="static/css/deals.css">
   <link rel="stylesheet" type="text/css" href="static/css/logIn.css">
   <link rel="stylesheet" type="text/css" href="static/css/neworder.css">
+  <link rel="stylesheet" type="text/css" href="static/css/reorder.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>{{> navbar}}</header>

@@ -1,9 +1,26 @@
 var express = require("express");
+var cookieSession = require('cookie-session');
 var app = express();
 var exphbs = require("express-handlebars");
+var config = require('./config');
 var helpers = require("./lib/helpers");
+var mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 
 app.use("/static", express.static("public"));
+app.set('superSecret', config.secret); // secret variable
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ['platanoPower'],
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
+
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
 
 app.engine(".hb", exphbs({
   defaultLayout: "main",
@@ -18,6 +35,7 @@ app.set("view engine", ".hb");
 
 app.get("/", function (req, res) {
   res.render("home");
+  req.session.logged = false;
 });
 
 app.get("/about", function (req, res) {
@@ -48,6 +66,19 @@ app.get("/order", function (req, res) {
   res.render("order");
 });
 
-app.listen(5331, function () {
-  console.log("Server listen on port 5331");
+app.get("/checkout", function (req, res) {
+  res.render("checkout");
+});
+
+require('./app/routes.js')(app);
+
+mongoose.connect(config.database, function(err, res) {
+  if (err) {
+    console.log('ERROR: connecting to Database. ' + err);
+  } else {
+    console.log("Connected to the db");
+  }
+  app.listen(config.Port, function () {
+    console.log("Server listen on port 5331");
+  });
 });

@@ -1,0 +1,25 @@
+#re_order .table thead,
+#re_order .table tbody {
+  display: flex;
+}
+
+#re_order .table tbody {
+  flex-direction: column;
+}
+
+#re_order .table tr {
+  display: flex;
+  width: 100%;
+  /*justify-content: space-between;*/
+  align-items: center;
+  border-top: 2px solid #ccc;
+}
+
+#re_order .table tr td{
+  border: 0;
+}
+
+#re_order .table th,
+#re_order .table td {
+  text-align: center;
+}

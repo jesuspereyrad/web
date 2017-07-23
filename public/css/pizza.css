@@ -43,3 +43,20 @@
 #pizza .table td {
   text-align: center;
 }
+
+@media only screen and (max-width: 500px) {
+  #pizza .table thead,
+  #pizza .table tbody {
+    display: table-header-group !important;
+  }
+}
+
+
+#pizza .table thead,
+#pizza .table tbody {
+  display: flex;
+}
+
+#pizza .table tbody {
+  flex-direction: column;
+}

@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var order = require('/mode/orderModel.js');
+var order = require('./orderModel.js');
 
 //User Model
 var userSchema = new mongoose.Schema({
@@ -7,7 +7,8 @@ var userSchema = new mongoose.Schema({
   name:    { type: String },
   email:     { type: String },
   password:  { type: String },
-  listOrder: {type: Order }
+  online: {type: Boolean},
+  listOrder: [{type: mongoose.Schema.Types.ObjectId,  ref: 'order'}]
 }, {collection: 'user'});
 
 module.exports = mongoose.model('user', userSchema);

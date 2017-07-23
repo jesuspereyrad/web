@@ -1,12 +1,11 @@
 var mongoose = require('mongoose');
 
-//User Model
+//Deal Model
 var ingredientSchema = new mongoose.Schema({
-  id:  { type: Number },
-  pizzaCrust:    { type: String },
-  pizzaToppings:  {type: String},
-  PizzaSauce:     { type: String },
-  PizzaCheese:  { type: String }
-}, {collection: 'ingredients'});
+  type: ['SAUCE', 'CRUST'],
+  name:    { type: String },
+  description: { type: String },
+  url: { type: String },
+}, {collection: 'ingredient'});
 
 module.exports = mongoose.model('ingredient', ingredientSchema);

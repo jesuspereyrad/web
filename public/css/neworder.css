@@ -50,7 +50,7 @@
 
 
 
-#new_order .jumbotron .center .box .item .image.active {
+#new_order .jumbotron .center .box .item .image.activeImage {
   border: 5px solid red;
 }
 
