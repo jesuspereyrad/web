@@ -57,24 +57,6 @@
     return "<tr class='col-12 col-lg-12' id='"+ element._id + "' items='"+ element.description.length +"'><td class='col-6 col-lg-3'>" + element.title + "</td><td class='col-6 col-lg-5'>One of our best pizzas, have " + element.crust + ", " + element.sauce + "topping: " + element.description +"</td><td class='col-6 col-lg-2'><img class='image' src='" + element.image + "'></td><td class='col-lg-2'>" + {{>checkbox}} + "<a href='' class='btn btn-primary' onclick='checkout(event, this);' father='"+ element._id + "'>Order now</a></td></tr>"
   }
 
-  checkSize = function(element) {
-    var radios = document.getElementsByName(element);
-    var formValid = false;
-
-    var i = 0;
-    while (!formValid && i < radios.length) {
-        if (radios[i].checked) {
-          formValid = true;
-          order.size = radios[i].getAttribute("size");
-          order.price = radios[i].value;
-        }
-        i++;        
-    }
-
-    if (!formValid) alert("Must check some option!");
-    return formValid;
-  }
-
   var checkout = function(e, element) {
     e.preventDefault();
     var father = (document.getElementById(element.getAttribute("father")));
@@ -84,7 +66,7 @@
     } else {
       order.extraPrice = Number(0.00);
     }
-    checkSize(father.id);
+    // checkSize(father.id);
     createForm();
     document.getElementById("lastOne").click();
   }
@@ -93,12 +75,12 @@
     document.getElementById("hide").innerHTML = "<form type='hidden' id='submitObject' onsubmit='return(checkout());' method='POST' action='./checkout'><input name='pizzaId' value='"+ order.pizza +"'><input name='other' value='"+ JSON.stringify(order) + "'><input type='submit' id='lastOne' class='btn btn-primary col-6 col-md-3 offset-md-9'/></form>";
   }
 
-  function checkout() {
-    var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("POST", "./checkout");
-    xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
-  }
+  // function checkout() {
+  //   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+  //   xmlhttp.open("POST", "./checkout");
+  //   xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  //   xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
+  // }
   getRequest("get", "pizzaTable", "./DB/pizzas/PREMADE", option);
 
 </script>

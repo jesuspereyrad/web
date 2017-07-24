@@ -21,6 +21,8 @@
       </thead>
       <tbody id="reorderTable">
       </tbody>
+      <div id="hide">
+      </div>
     </table>
   </div>
   <!-- Make Order Again -->
@@ -38,6 +40,7 @@
 </script>
 
 <script>
+  var order = {};
   var getRequest = function(method, father, url, func) {
     var client = new XMLHttpRequest();
     client.onreadystatechange = function() {
@@ -72,11 +75,35 @@
 
   function init(userId) {
     var option = function(element) {
+      pizza = element.pizza;
+      order = element.order;
       var date = (new Date(element.order.date)).toDateString();
-      return "<tr class='col-12 col-lg-12'><td class='col-6 col-lg-3'>" + element.pizza.title + "</td><td class='col-6 col-lg-5'>" + date + "</td><td class='col-6 col-lg-2'>" + element.order.price + " </td><td class='col-6 col-lg-2'><a href=' 'class='btn btn-primary'>Order now</a></td></tr>"
+      return "<tr class='col-12 col-lg-12' id='"+ element.pizza._id + "' items='"+ element.pizza.description.length +"'><td class='col-6 col-lg-3'>" + element.pizza.title + "</td><td class='col-6 col-lg-5'>" + date + "</td><td class='col-6 col-lg-2'>" + element.order.price + " </td><td class='col-6 col-lg-2'><a href='' class='btn btn-primary' onclick='return(checkout(event, this));' father='"+ element.pizza._id + "'>Order now</a></td></tr>"
     }
 
     getRequest("get", "reorderTable", "./DB/userOrders/" + userId, option);
+
+  }
+
+  var checkout = function(e, element) {
+    e.preventDefault();
+    var father = (document.getElementById(element.getAttribute("father")));
+    order.pizza = father.id;
+    if(Number(father.getAttribute('items')) > 3) {
+      order.extraPrice = ((Number(father.getAttribute('items')) - 3) * 2).toFixed(2);
+    } else {
+      order.extraPrice = Number(0.00);
+    }
+    // checkSize(father.id);
+    createForm();
+    document.getElementById("lastOne").click();
+  }
+
+  function createForm() {
+    document.getElementById("hide").innerHTML = "<form type='hidden' id='submitObject' method='POST' action='./checkout'><input name='pizzaId' value='"+ order.pizza +"'><input name='other' value='"+ JSON.stringify(order) + "'><input type='submit' id='lastOne' class='btn btn-primary col-6 col-md-3 offset-md-9'/></form>";
+
+    // document.getElementById("lastOne").click();
+    return false;
   }
 
 </script>

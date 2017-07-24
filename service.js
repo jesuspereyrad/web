@@ -37,27 +37,27 @@
     // console.log("Last cancel");
   };
 
-  function getUser(oneOrder) {
-    user.findById(oneOrder.user, function(err, currentUser) {
-      if(err) {
-        console.log(err);
-      } else {
-        // console.log(currentUser);
-        return({currentUser});
-      }
-    })
-  }
+  // function getUser(oneOrder) {
+  //   user.findById(oneOrder.user, function(err, currentUser) {
+  //     if(err) {
+  //       console.log(err);
+  //     } else {
+  //       console.log(currentUser);
+  //       return({currentUser});
+  //     }
+  //   })
+  // }
 
 
   function load(order) {
-    var promise = Orders.findById(order._id).exec();
-    promise.then(function(orders) {
-      return getUser(orders);
-    }).then(function(user) {
-      // console.log(user);
-      mail({user: "pedro", order: order.date});
-    }).catch(function(err) {
-      console.log(err);
+    var promise = Orders.findById(order._id, function(err, obj) {
+      user.findById(order.user, function(err, currentUser) {
+        if(err) {
+          console.log(err);
+        } else {
+            mail({name: currentUser.name, number: order._id, date: order.date});
+          }
+        });
     });
   }
 

@@ -3,9 +3,7 @@
 <!-- GUIDE JUMBOTRON -->
   
   <div class="jumbotron col-10 offset-1">
-  <div class="alert alert-success hidden-up" role="alert">
-    <strong>Something wrong!</strong> Complete everything.
-  </div>
+
 
     <div class="box">
       <!-- Nav tabs -->
@@ -103,13 +101,14 @@
         <div class="tab-pane" id="toppingTab" role="tabpanel">
           <div class="center">
             <h2>Select Topping</h2>
+            <div class='alert alert-danger hidden-sm-up' id="error" role='alert'><strong>Something wrong!</strong> Please select one cheese.</div>")
             <form>
               <div class="col-8 offset-2">
                 <div class="row">
                   <div class="col-12 col-md-4">
                     <div class="form-group">
                       <label for="cheese">Cheese</label>
-                      <select multiple class="form-control" id="cheese">
+                      <select multiple required class="form-control" id="cheese">
                         
                       </select>
                     </div>
@@ -262,6 +261,7 @@
     getValues("vegetable");
     extra = pizza["meat"].name.length + pizza["vegetable"].name.length + pizza["cheese"].name.length;
     console.log(extra);
+    order.extraPrice = 0;
     order.price = Number((pizza["size"].value));
     console.log(pizza);
     var string = " ";
@@ -308,15 +308,28 @@ function checkout() {
   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
   xmlhttp.open("POST", "./checkout");
   xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+  console.log(order);
   xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
 }
 </script>
 
 <script>
   $('#next').click(function(){
-    console.log("lkl");
     if($('.nav-tabs > .nav-item > .active').parent().next('li').length > 0) {
-      $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
+      if(($('.nav-tabs > .nav-item > .active').attr('href') == '#toppingTab')) {
+        if(validate()) {
+          console.log("hola");
+          $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
+        } else {
+          console.log($('#error'));
+          $('#error').removeClass("hidden-sm-up");
+        }
+      }
+      else {
+        console.log("paso");
+        $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
+        $('#error').addClass("hidden-sm-up");
+      }
     } else {
       $('#next').hide();
     }
@@ -329,4 +342,8 @@ function checkout() {
       $('#back').hide();
     }  
   });
+
+  function validate() {
+    return ($("#cheese")[0].options.selectedIndex >= 0);
+  }
 </script>

@@ -42,6 +42,9 @@ var userId;
 var order = {};
 
 function init(element) {
+  if(!order.extraPrice) {
+    order.extraPrice = 0;
+  }
   order.status =['ACTIVE'];
   order.size = "{{order.size}}";
   order.extraPrice = {{order.extraPrice}};
