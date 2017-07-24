@@ -99,7 +99,7 @@
   function checkout() {
     order.price = total;
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("POST", "/checkout");
+    xmlhttp.open("POST", "./checkout");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
   }
