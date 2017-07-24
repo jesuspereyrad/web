@@ -284,7 +284,7 @@ function submitPizza(e)
   {
     e.preventDefault();
     var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-    xmlhttp.open("POST", "/db/pizza");
+    xmlhttp.open("POST", ./DB/pizza");
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(JSON.stringify(pizza));
     xmlhttp.onreadystatechange = function() {
