@@ -38,14 +38,12 @@
   };
 
   function getUser(oneOrder) {
-    console.log(user);
-    console.log(oneOrder);
     user.findById(oneOrder.user, function(err, currentUser) {
       if(err) {
         console.log(err);
       } else {
-        console.log(currenUser);
-        return({user: currentUser});
+        // console.log(currentUser);
+        return({currentUser});
       }
     })
   }
@@ -57,7 +55,7 @@
       return getUser(orders);
     }).then(function(user) {
       // console.log(user);
-      mail({name: "pedro", order: order.date});
+      mail({user: "pedro", order: order.date});
     }).catch(function(err) {
       console.log(err);
     });
