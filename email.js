@@ -10,6 +10,7 @@ module.exports = function() {
   });
 
   function loadEmail(userInfo) {
+    console.log(userInfo);
     var mailOptions = {
       from: 'jesusPizza@gmail.com',
       to: 'jesuspereyrad@gmail.com',
@@ -25,4 +26,5 @@ module.exports = function() {
       }
     })
   };
+  return loadEmail;
 };

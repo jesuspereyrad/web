@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 module.exports = function(app) {
   require('../controller/userController.js')(app);
   require('../controller/pizzaController.js')(app);
-  // require('../controllers/dealController.js')(app);
   require('../controller/ingredientController.js')(app);
   require('../controller/toppingController.js')(app);
   require('../controller/orderController.js')(app);

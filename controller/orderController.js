@@ -133,4 +133,13 @@ module.exports = function(app) {
       }
     }) 
   };
+  return {
+    getOrder,
+    getUserByOrder,
+    getOrderByStatus,
+    getOrders,
+    addOrder,
+    deleteOrder,
+    editOrder
+  }
 }
