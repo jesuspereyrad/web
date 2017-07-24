@@ -99,6 +99,6 @@
     xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
   }
-  getRequest("get", "pizzaTable", "/DB/pizzas/PREMADE", option);
+  getRequest("get", "pizzaTable", "./DB/pizzas/PREMADE", option);
 
 </script>

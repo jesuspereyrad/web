@@ -76,7 +76,7 @@
       return "<tr class='col-12 col-lg-12'><td class='col-6 col-lg-3'>" + element.pizza.title + "</td><td class='col-6 col-lg-5'>" + date + "</td><td class='col-6 col-lg-2'>" + element.order.price + " </td><td class='col-6 col-lg-2'><a href=' 'class='btn btn-primary'>Order now</a></td></tr>"
     }
 
-    getRequest("get", "reorderTable", "/DB/userOrders/" + userId, option);
+    getRequest("get", "reorderTable", "./DB/userOrders/" + userId, option);
   }
 
 </script>

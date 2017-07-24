@@ -46,7 +46,7 @@ function init(element) {
   order.size = "{{order.size}}";
   order.extraPrice = {{order.extraPrice}};
   order.priceSize = {{order.price}};
-  getRequest("get", "tableBody", "http://localhost:5331/DB/pizza/" + document.getElementById("orderId").value , populateTable);
+  getRequest("get", "tableBody", "./DB/pizza/" + document.getElementById("orderId").value , populateTable);
   userId = element;
   console.log(userId);
 }
