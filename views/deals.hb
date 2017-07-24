@@ -104,6 +104,6 @@
     xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
   }
 
-  getRequest("get", "dealTable", "http://localhost:5331/DB/orders", option);
+  getRequest("get", "dealTable", "/DB/orders", option);
 
 </script>
