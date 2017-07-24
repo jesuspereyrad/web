@@ -40,15 +40,14 @@
   function getUser(oneOrder) {
     console.log(user);
     console.log(oneOrder);
-    return user
-      .findById(oneOrder.user)
-      .then(function(currentUser) {
+    user.findById(oneOrder.user, function(err, currentUser) {
+      if(err) {
+        console.log(err);
+      } else {
         console.log(currenUser);
         return({user: currentUser});
-      })
-      .catch(function(err) {
-          console.log(err);
-      });
+      }
+    })
   }
 
 
