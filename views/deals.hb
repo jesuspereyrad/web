@@ -93,7 +93,7 @@
   }
 
   function createForm() {
-    document.getElementById("hide").innerHTML = "<form type='hidden' id='submitObject' onsubmit='return(checkout());' method='POST' action='/checkout'><input name='pizzaId' value='"+ order.pizza +"'><input name='other' value='"+ JSON.stringify(order) + "'><input type='submit' id='lastOne' class='btn btn-primary col-6 col-md-3 offset-md-9'/></form>";
+    document.getElementById("hide").innerHTML = "<form type='hidden' id='submitObject' onsubmit='return(checkout());' method='POST' action='./checkout'><input name='pizzaId' value='"+ order.pizza +"'><input name='other' value='"+ JSON.stringify(order) + "'><input type='submit' id='lastOne' class='btn btn-primary col-6 col-md-3 offset-md-9'/></form>";
   }
 
   function checkout() {
