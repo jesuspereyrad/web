@@ -7,7 +7,8 @@ var orderSchema = new mongoose.Schema({
   pizza: {type: mongoose.Schema.Types.ObjectId,  ref: 'pizza', required: true},
   size: {type: String, required: true},
   price:  { type: Number, required: true},
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  user: {type: mongoose.Schema.Types.ObjectId,  ref: 'pizza', required: true}
 }, {collection: 'order'});
 
 module.exports = mongoose.model('order', orderSchema);

@@ -26,8 +26,9 @@ module.exports = function(app) {
   app.get('/db/users', getUsers);
   app.post('/db/user', addUser);
   app.post('/db/authenticate', authenticationUser);
-  app.put('/db/user', editOrder);
+  app.put('/db/user', editUser);
   app.get('/db/userOrders/:id', getOrdersByUser);
+  app.get('/db/userOrder/:id', getUserByOrder);
 
   //Pizza route
   app.post('/db/pizza', addPizza);
@@ -36,11 +37,14 @@ module.exports = function(app) {
   app.get('/db/pizzasDetail', showPizzas);
   app.get('/db/pizzas/:type', getPizzasByType);
   app.delete('/db/pizzas/:id', deletePizza);
+  app.get('/db/orderByUser/:id', getUserByOrder);
 
   //Order route
   app.post('/db/order', addOrder);
   app.get('/db/order/:id', getOrder);
+  app.get('/db/order_status/:status', getOrderByStatus);
   app.get('/db/orders', getOrders);
+  app.put('/db/order/', editOrder);
   app.delete('/db/orders/:id', deleteOrder);
 
 };

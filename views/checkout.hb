@@ -48,6 +48,7 @@ function init(element) {
   order.priceSize = {{order.price}};
   getRequest("get", "tableBody", "./DB/pizza/" + document.getElementById("orderId").value , populateTable);
   userId = element;
+  order.user = userId;
   console.log(userId);
 }
 
@@ -89,8 +90,9 @@ function submitOrder(event) {
   xmlhttp.send(JSON.stringify(order));
   xmlhttp.onreadystatechange = function() {
     if(xmlhttp.readyState === 4) {
-      orderId =  JSON.parse(xmlhttp.responseText);
-      updateOrderList(orderId._id);
+      orderObject =  JSON.parse(xmlhttp.responseText);
+      console.log(orderObject);
+      updateOrderList(orderObject);
     }
   }
 }

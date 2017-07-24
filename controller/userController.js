@@ -47,14 +47,17 @@ module.exports = function(app) {
   };
 
   // Get - return a user in the DB
-  getUser = function() {
-
+  getUserByOrder = function(req, res) {
+    user.findById(req.params.id,  function(err, current) {
+      if(err){
+        res.status(504).send("id did no exist");
+      }
+      else {
+        res.status(200).json(current);
+      }
+    });
   };
 
-  //Get - return current user in the DB
-  getCurrentUser = function() {
-
-  };
 
   //POST - create user in the DB
   addUser = function(req, res) {
@@ -111,7 +114,7 @@ module.exports = function(app) {
     });
   };
 
-  editOrder = function(req, res) {
+  editUser = function(req, res) {
     console.log(req.body);
     user.findById(req.body.id, function(err, current) {
       if (err) return handleError(err);
@@ -141,6 +144,7 @@ module.exports = function(app) {
         console.log(err);
     });
   };
+
 
   //Delete - delete user in the DB
   deteleUser = function() {
