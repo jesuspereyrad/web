@@ -31,12 +31,16 @@ module.exports = function(app) {
 
   //Pizza route
   app.post('/db/pizza', addPizza);
+  app.get('/db/pizza/:id', getPizza);
   app.get('/db/pizzas', getPizzas);
   app.get('/db/pizzasDetail', showPizzas);
   app.get('/db/pizzas/:type', getPizzasByType);
+  app.delete('/db/pizzas/:id', deletePizza);
 
   //Order route
   app.post('/db/order', addOrder);
+  app.get('/db/order/:id', getOrder);
   app.get('/db/orders', getOrders);
+  app.delete('/db/orders/:id', deleteOrder);
 
 };

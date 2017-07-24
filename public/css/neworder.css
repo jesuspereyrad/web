@@ -76,3 +76,8 @@
   /*width: 100%;*/
   border-radius: 50%;
 }
+
+#new_order .sauceactive, 
+#new_order .crustactive {
+  border: 5px solid red;
+}

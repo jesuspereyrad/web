@@ -3,8 +3,8 @@
 <!-- GUIDE JUMBOTRON -->
   
   <div class="jumbotron col-10 offset-1">
-  <div class="alert alert-success" role="alert">
-    <strong>Well done!</strong> You are Logged In.
+  <div class="alert alert-success hidden-up" role="alert">
+    <strong>Something wrong!</strong> Complete everything.
   </div>
 
     <div class="box">
@@ -38,10 +38,7 @@
             <h4>Click the button when you are ready!</h4>
             <div class="col-6 offset-3">
               <input type="text" name="title" id="pizzaTitle" class="form-control" placeholder="Name your pizza!" />
-              <button type="button" id="next" class="btn btn-primary">Next</button>
-            </div>
-            <div class="col-6 col-md-4 offset-md-4 offset-3">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".logInModal">Ready</button>
+              <!-- <button style="margin: 15px" type="button" id="next" class="btn btn-primary">Next</button> -->
             </div>
           </div>
         </div>
@@ -137,21 +134,27 @@
           </div>
         </div>
         <div class="tab-pane" id="reviewTab" role="tabpanel">
-        <div class="container">
-          <table class="table">
-            <thead class="thead-default">
-              <tr class="row col-12">
-                <th class="col-12" style="text-align: center" id="PizzaTitleDescription"></th>
-              </tr>
-            </thead>
-            <tbody id="tableBody">
-              
-            </tbody>
-          </table>
+          <div class="container">
+            <table class="table">
+              <thead class="thead-default">
+                <tr class="row col-12">
+                  <th class="col-12" style="text-align: center" id="PizzaTitleDescription"></th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                
+              </tbody>
+            </table>
             <input type='submit' onclick="return(submitPizza(event));" class='btn btn-primary col-6 col-md-3 offset-md-9'/>
-          </form>
+            <div id="hide" class="hidden-sm-up">
+            </div>
+          </div>
         </div>
       </div>
+       <div class="col-6 offset-3">
+         <button style="margin: 15px" type="button" id="back" class="btn btn-primary">Back</button>
+         <button style="margin: 15px" type="button" id="next" class="btn btn-primary">Next</button>
+       </div>
     </div>
   </div>
 </div>
@@ -196,7 +199,7 @@
 
   var card = function(element) {
     console.log(element.name);
-    return "<div class='card' onclick='select(this)' id='" + element._id + "' name='"+ element.name + "' style='width:20%;'><img class='card-img-top' 'src='" + element.url + " alt='Card image cap'/> <div class='card-block'><h4 class='card-title'>" + element.name + "</h4> <p class='card-text'>" + element.description + "</p></div></div>"
+    return "<div class='card' onclick='select(this)' id='" + element._id + "' name='"+ element.name + "' style='width:20%;'><img class='card-img-top' src='" + element.url + "' alt='Card image cap' width=100% height=200px/> <div class='card-block'><h4 class='card-title'>" + element.name + "</h4> <p class='card-text'>" + element.description + "</p></div></div>"
   }
 
   getRequest("get", "cheese", "http://localhost:5331/DB/toppings/CHEESE", option);
@@ -269,9 +272,9 @@
     });
     string += "<tr class='row col-12'><td class='col-6'> Size </td><td class='col-6'>" + pizza["size"].value + "</td></tr>"
     if(extra > 3) {5
-      var extraPrice = Number((extra - 3) * 2);
-      order.price += extraPrice;
-      string += "<tr class='row col-12'><td class='col-6'> Extra topping </td><td class='col-6'>$" + extraPrice.toFixed(2) + "</td></tr>"
+      order.extraPrice = Number((extra - 3) * 2);
+      order.price += order.extraPrice;
+      string += "<tr class='row col-12'><td class='col-6'> Extra topping </td><td class='col-6'>$" + order.extraPrice.toFixed(2) + "</td></tr>"
     }
     string += "<tr class='row col-12'><td class='col-6'> Total </td><td class='col-6'>$" + (order.price.toFixed(2)) + "</td></tr>"
     document.getElementById("tableBody").innerHTML = string;
@@ -289,28 +292,41 @@ function submitPizza(e)
         pizza._id =  JSON.parse(xmlhttp.responseText);
         order.pizza = pizza._id;
         order.status = ['ACTIVE'];
-        submitOrder();
+        createForm();
+        if(document.getElementById("lastOne")) {
+          document.getElementById("lastOne").click();
+        }
       }
     }
-    return false;
   }
 
-function submitOrder() {
+function createForm() {
+  document.getElementById("hide").innerHTML = "<form type='hidden' id='submitObject' onsubmit='return(checkout());' method='POST' action='/checkout'><input name='pizzaId' value='"+ order.pizza._id +"'><input name='other' value='"+ JSON.stringify(order) + "'><input type='submit' id='lastOne' class='btn btn-primary col-6 col-md-3 offset-md-9'/></form>";
+}
+
+function checkout() {
   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-  xmlhttp.open("POST", "/db/order");
+  xmlhttp.open("POST", "/checkout");
   xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-  xmlhttp.send(JSON.stringify(order));
+  xmlhttp.send(JSON.stringify(pizza), JSON.stringify(order));
 }
 </script>
 
-<script> 
-  $("#next").click(function(e) {
-    e.preventDefault();
-    $(".nav-link.active").removeClass("active");
-    $(".tab-pane.active").removeClass("active").hide();
-    var next = $('#sizeTab').tab('show');
-    $("a[href='#sizeTab'").addClass("active");
-    next.children().addClass("active");
-    return false;
-  })
+<script>
+  $('#next').click(function(){
+    console.log("lkl");
+    if($('.nav-tabs > .nav-item > .active').parent().next('li').length > 0) {
+      $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
+    } else {
+      $('#next').hide();
+    }
+  });
+  $('#back').click(function(){
+    if($('.nav-tabs > .nav-item > .active').parent().prev('li').length > 0) {
+      $('#back').show();
+      $('.nav-tabs > .nav-item > .active').parent().prev('li').find('a').trigger('click');
+    } else {
+      $('#back').hide();
+    }  
+  });
 </script>

@@ -6,8 +6,16 @@ var topping = require('../model/toppingModel.js');
 module.exports = function(app) {
 
   //Get - pizza by id from the DB
-  getPizza = function() {
-
+  getPizza = function(req, res) {
+    pizza.findById(req.params.id, function(err, onePizza) {
+      if (err){
+        res.status(404).send("Pizza not found");
+      }
+      else {
+        console.log('GET /PizzaByID');
+        res.status(200).json(onePizza);
+      }
+    });
   };
 
   //Get - all pizzas from premade or user
@@ -92,8 +100,16 @@ module.exports = function(app) {
   };
 
   //Delete - delete a pizza from the DB
-  deletePizza = function() {
-
+  deletePizza = function(req, res) {
+    console.log(req.params.id)
+    pizza.remove({ _id: req.params.id }, function(err) {
+      if (err) {
+        res.status(504).send('error!');
+      }
+      else {
+        res.status(200).send('Pizza deleted');
+      }
+   });
   };
 
   //PUT - edit a pizza from the DB

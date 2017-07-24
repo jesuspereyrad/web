@@ -61,9 +61,9 @@ function login() {
 
 function register() {
   return ({
+    name: document.getElementById("username").value,
     email: document.getElementById("newEmail").value,
-    password: document.getElementById("newPassword").value,
-    username: document.getElementById("username").value
+    password: document.getElementById("newPassword").value
   })
 }
 
@@ -74,12 +74,12 @@ function submitForm(e, element, url)
   var xhr = new XMLHttpRequest();
   xhr.onload = function() { 
   }
-  if(element.parentElement.parentElement.id == "register") {
+  if(element.value === "Register") {
     user = register();
   } else {
     user = login();
   }
-  xhr.open ("POST", url);
+  xhr.open("POST", url);
   xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhr.send(JSON.stringify(user));
   xhr.onreadystatechange = function() {

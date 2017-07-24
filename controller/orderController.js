@@ -18,8 +18,15 @@ function getPizza(oneOrder) {
 
 module.exports = function(app) {
   //GET - get order from DB
-  getOrder = function() {
-
+  getOrder = function(req, res) {
+    var promise = order.findById(req.params.id).exec();
+    promise.then(function(orders) {
+      return getPizza(orders);
+    }).then(function(result) {
+      res.status(200).json(result);
+    }).catch(function(err) {
+        console.log(err);
+    });
   };
 
   //GET - get a list of order from the DB
@@ -61,9 +68,17 @@ module.exports = function(app) {
   };
 
   //DELETE - delete an order from the DB
-  deleteOrder = function() {
-
-  };
+  deleteOrder = function(req, res) {
+    pizza.remove({ _id: req.params.id }, function(err) {
+      if (err) {
+        console.log('error!');
+      }
+      else {
+        console.log('Order deleted');
+      }
+   });
+  res.status(200).send("Order deleted");
+ }
 
   //PUT - update an order in the DB
   updateOrder = function() {

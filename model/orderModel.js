@@ -4,9 +4,9 @@ var pizza = require('./pizzaModel.js');
 var orderSchema = new mongoose.Schema({
   id:  { type: Number },
   status:    ['DELIVERED', 'CANCELED', 'ACTIVE'],
-  pizza: {type: mongoose.Schema.Types.ObjectId,  ref: 'pizza'},
-  size: {type: String},
-  price:  { type: Number },
+  pizza: {type: mongoose.Schema.Types.ObjectId,  ref: 'pizza', required: true},
+  size: {type: String, required: true},
+  price:  { type: Number, required: true},
   date: { type: Date, default: Date.now }
 }, {collection: 'order'});
 

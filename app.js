@@ -6,6 +6,7 @@ var config = require('./config');
 var helpers = require("./lib/helpers");
 var mongoose = require("mongoose");
 var bodyParser = require("body-parser");
+var price = require("./price.js");
 
 app.use("/static", express.static("public"));
 app.set('superSecret', config.secret); // secret variable
@@ -47,7 +48,7 @@ app.get("/team", function (req, res) {
 });
 
 app.get("/pizza", function (req, res) {
-  res.render("pizza");
+  res.render("pizza", {size: price});
 });
 
 app.get("/deals", function (req, res) {
@@ -66,8 +67,9 @@ app.get("/order", function (req, res) {
   res.render("order");
 });
 
-app.get("/checkout", function (req, res) {
-  res.render("checkout");
+app.post("/checkout", function (req, res) {
+  console.log(req.body);
+  res.render("checkout", {id: req.body.pizzaId, order: JSON.parse(req.body.other)})
 });
 
 require('./app/routes.js')(app);

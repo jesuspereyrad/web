@@ -89,14 +89,11 @@ module.exports = function(app) {
 
   //POST - authenticate user
   authenticationUser = function(req, res) {
-    console.log(req.body.email);
-    console.log(req.body.password);
+    console.log(req.body);
     user.findOne({"email": req.body.email},  function(err, current) {
-      if(!current){
-        if(err) {
-          res.status(404).send("Email not found in the db");
-        }
-      } 
+      if(err || !current) {
+        res.status(404).send("Email not found in the db");
+      }
       else {
         if(req.body.password) {
           if(bcrypt.compareSync(req.body.password, current.password)) {
