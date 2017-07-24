@@ -84,7 +84,7 @@ function populateTable(element) {
 function submitOrder(event) {
   event.preventDefault();
   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-  xmlhttp.open("POST", "/db/order");
+  xmlhttp.open("POST", "./DB/order");
   xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xmlhttp.send(JSON.stringify(order));
   xmlhttp.onreadystatechange = function() {
@@ -97,7 +97,7 @@ function submitOrder(event) {
 
 function updateOrderList(element) {
   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-  xmlhttp.open("PUT", "/db/user");
+  xmlhttp.open("PUT", "./DB/user");
   xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xmlhttp.send(JSON.stringify({id: userId, order: element}));
 }
