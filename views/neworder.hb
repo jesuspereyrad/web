@@ -202,11 +202,11 @@
     return "<div class='card' onclick='select(this)' id='" + element._id + "' name='"+ element.name + "' style='width:20%;'><img class='card-img-top' src='" + element.url + "' alt='Card image cap' width=100% height=200px/> <div class='card-block'><h4 class='card-title'>" + element.name + "</h4> <p class='card-text'>" + element.description + "</p></div></div>"
   }
 
-  getRequest("get", "cheese", "/DB/toppings/CHEESE", option);
-  getRequest("get", "meat", "/DB/toppings/MEAT", option);
-  getRequest("get", "vegetable", "/DB/toppings/VEGETABLE", option);
-  getRequest("get", "crust", "/DB/ingredients/CRUST", card);
-  getRequest("get", "sauce", "/DB/ingredients/SAUCE", card);
+  getRequest("get", "cheese", "./DB/toppings/CHEESE", option);
+  getRequest("get", "meat", "./DB/toppings/MEAT", option);
+  getRequest("get", "vegetable", "./DB/toppings/VEGETABLE", option);
+  getRequest("get", "crust", "./DB/ingredients/CRUST", card);
+  getRequest("get", "sauce", "./DB/ingredients/SAUCE", card);
 
   var selectSize = function(element, active) {
     var active = document.getElementsByClassName("activeImage");
