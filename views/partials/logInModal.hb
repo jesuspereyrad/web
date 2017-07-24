@@ -24,7 +24,7 @@
                 <div class="form-group">
                   <input type="password" name="password" class="form-control" id="password" placeholder="Password"/>
                 </div>
-                <input type="submit" value="Log In!" class="btn btn-primary" onclick="return(submitForm(event, this, '/db/authenticate'));" required/>
+                <input type="submit" value="Log In!" class="btn btn-primary" onclick="return(submitForm(event, this, './db/authenticate'));" required/>
               </form>
             </div>
             <div class="tab-pane" id="register" role="tabpanel">
@@ -40,7 +40,7 @@
                   <input type="password" class="form-control" id="newPassword" name="password" placeholder="Password"/>
                 </div>
                 <input type="submit" 
-                onclick="return(submitForm(event, this,'/db/user'));" 
+                onclick="return(submitForm(event, this,'./db/user'));" 
                 value="Register" class="btn btn-primary" required/>
               </form>
             </div>
