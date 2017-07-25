@@ -89,11 +89,13 @@ function submitForm(e, element, url)
       document.getElementById("registerFail").classList.remove("hidden-xs-up");
       document.getElementById("registerFail").innerHTML = "<strong>Something wrong!</strong>" + xhr.responseText;
     } else {
-      var userElement = JSON.parse(xhr.response);
-      document.getElementById("registerSuccess").classList.remove("hidden-xs-up");
-      document.getElementById("registerSuccess").innerHTML = "<strong>Hello Pizza eater! </strong> How you feel today Mr/Ms " + userElement.name;
-      hide();
-      init(userElement._id);
+        var userElement = JSON.parse(xhr.response);
+        document.getElementById("registerSuccess").classList.remove("hidden-xs-up");
+        document.getElementById("registerSuccess").innerHTML = "<strong>Hello Pizza eater! </strong> How you feel today Mr/Ms " + userElement.name;
+        hide();
+        if(init != undefined) {
+          init(userElement._id);
+        }
       }
     }
   }
