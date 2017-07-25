@@ -93,9 +93,7 @@ function submitForm(e, element, url)
         document.getElementById("registerSuccess").classList.remove("hidden-xs-up");
         document.getElementById("registerSuccess").innerHTML = "<strong>Hello Pizza eater! </strong> How you feel today Mr/Ms " + userElement.name;
         hide();
-        if(init != undefined) {
-          init(userElement._id);
-        }
+        init(userElement._id);
       }
     }
   }

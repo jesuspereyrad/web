@@ -66,7 +66,7 @@
     } else {
       order.extraPrice = Number(0.00);
     }
-    // checkSize(father.id);
+    checkSize(father.id);
     createForm();
     document.getElementById("lastOne").click();
   }
@@ -74,6 +74,25 @@
   function createForm() {
     document.getElementById("hide").innerHTML = "<form type='hidden' id='submitObject' onsubmit='return(checkout());' method='POST' action='./checkout'><input name='pizzaId' value='"+ order.pizza +"'><input name='other' value='"+ JSON.stringify(order) + "'><input type='submit' id='lastOne' class='btn btn-primary col-6 col-md-3 offset-md-9'/></form>";
   }
+
+    checkSize = function(element) {
+    var radios = document.getElementsByName(element);
+    var formValid = false;
+
+    var i = 0;
+    while (!formValid && i < radios.length) {
+        if (radios[i].checked) {
+          formValid = true;
+          order.size = radios[i].getAttribute("size");
+          order.price = radios[i].value;
+        }
+        i++;        
+    }
+
+    if (!formValid) alert("Must check some option!");
+    return formValid;
+  }
+
 
   // function checkout() {
   //   var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
