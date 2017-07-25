@@ -1,3 +1,5 @@
+/*Reorder style*/
+
 #re_order .table thead,
 #re_order .table tbody {
   display: flex;

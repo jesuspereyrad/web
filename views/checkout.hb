@@ -96,6 +96,7 @@ function submitOrder(event) {
       orderObject =  JSON.parse(xmlhttp.responseText);
       console.log(orderObject);
       updateOrderList(orderObject);
+      window.location.href = "./re_order";
     }
   }
 }

@@ -78,9 +78,15 @@
       pizza = element.pizza;
       order = element.order;
       var date = (new Date(element.order.date)).toDateString();
-      return "<tr class='col-12 col-lg-12' id='"+ element.pizza._id + "' items='"+ element.pizza.description.length +"'><td class='col-6 col-lg-3'>" + element.pizza.title + "</td><td class='col-6 col-lg-5'>" + date + "</td><td class='col-6 col-lg-2'>" + element.order.price + " </td><td class='col-6 col-lg-2'><a href='' class='btn btn-primary' onclick='return(checkout(event, this));' father='"+ element.pizza._id + "'>Order now</a></td></tr>"
+      string = "<tr class='col-12 col-lg-12' id='"+ element.pizza._id + "' items='"+ element.pizza.description.length +"'><td class='col-6 col-lg-3'>" + element.pizza.title + "</td><td class='col-6 col-lg-5'>" + date + "</td><td class='col-6 col-lg-2'>" + element.order.price + " </td><td class='col-6 col-lg-2'><a href='' class='btn btn-small btn-primary' onclick='return(checkout(event, this));' father='"+ element.pizza._id + "'>Order now</a>";
+      
+      console.log(element.order.beforeTwo);
+      if(element.order.beforeTwo) {
+        console.log("entramos");
+        string += "<a style='margin-top: 15px' href='' class='btn btn-small btn-danger' onclick='return(checkout(event, this));' father='"+ element.order._id + "'>Cancel</a>";
+      }
+      return string + "</td></tr>";
     }
-
     getRequest("get", "reorderTable", "./DB/userOrders/" + userId, option);
 
   }

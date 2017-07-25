@@ -1,25 +1,5 @@
 /*Pizza Style*/
 
-/*#pizza .table th:first-child,
-#pizza .table td:first-child{
-  width: 15%;
-}
-
-#pizza .table th:nth-child(2),
-#pizza .table td:nth-child(2) {
-  width: 50%;
-}
-
-#pizza .table th:nth-child(3),
-#pizza .table td:nth-child(3) {
-  width: 20%;
-}
-
-#pizza .table th:nth-child(4),
-#pizza .table th:nth-child(4) {
-  width: 15%;
-}*/
-
 #pizza .table tr {
   display: flex;
   width: 100%;

@@ -6,7 +6,7 @@
 
   var Orders = require("./model/orderModel.js");
   var user = require("./model/userModel.js");
-  var intervalObject = null;
+  var interval = null;
 
   function reviewOrders(err, orders) {
     if (err) {
@@ -15,14 +15,20 @@
     }
     orders.forEach(function(order) {
       var now = new Date().getTime();
-      var time =  (now/1000)- (order.date/1000);
-      if(order.status[0] === "ACTIVE" && time > 120) {
-        console.log("cant cancel");
+      console.log("tamo aqui");
+      var difference =  (now/1000)- (order.date/1000);
+      if(order.status[0] === "ACTIVE" && difference > 120) {
+        var newOrder = order;
+        newOrder.beforeTwo = false;
+        newOrder.save(function (err, updated) {
+          if (err) {
+            return err;
+          } else {
+            console.log(order);
+          }
+        });
       }
-      var timeBeforeDelivered = waitTime();
-      console.log("time " +timeBeforeDelivered);
-      if (order.status[0] === "ACTIVE" && (time >= timeBeforeDelivered)) {
-        console.log("delta " +time);
+      if (order.status[0] === "ACTIVE" && (difference >= waitTime())) {
         deliverOrder(order, function(result, err) {
           console.log("bajamo");
           if (err) {
@@ -71,18 +77,15 @@
     return Math.floor(Math.random() * (300 - 180)) + 180;
   }
 
-  function PizzaService() {
+  function Daemon() {
     Orders.find({status: "ACTIVE"}, function(err, orders) {
       if (err){
         console.log("Orders not found");
       }
       else {
-        // console.log('GET /OrdersByStatus');
         reviewOrders(err, orders)
       }
     });
-    // console.log("termino pizzaservice");
-    // clearInterval(intervalObject);
   }
 
   console.log('Pizza Deamon is watching ', new Date());
@@ -93,7 +96,6 @@
       console.log('ERROR: connecting to Database. ' + err);
     } else {
       console.log("Connected to the db");
-      intervalObject = setInterval(PizzaService, 1000);
-      // PizzaService();
+      interval = setInterval(Daemon, 1000);
     }
   });
