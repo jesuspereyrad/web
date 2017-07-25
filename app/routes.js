@@ -44,6 +44,7 @@ module.exports = function(app) {
   app.get('/db/order_status/:status', getOrderByStatus);
   app.get('/db/orders', getOrders);
   app.put('/db/order/', editOrder);
+  app.put('/db/change_order/:id', changeOrder);
   app.delete('/db/orders/:id', deleteOrder);
 
 };

@@ -117,6 +117,24 @@ module.exports = function(app) {
   res.status(200).send("Order deleted");
  }
 
+ //PUT - update an order in the DB
+ changeOrder = function(req, res) {
+   order.findById(req.params.id, function (err, current) {
+     if(err) {
+       res.status(500).send("Something happen");
+     } else {
+       var newOrder = current;
+         newOrder.beforeTwo = false;
+         newOrder.status = "CANCELED";
+         console.log(newOrder);
+         newOrder.save(function (err, updated) {
+         if (err) return console.log(err);
+         res.send(updated);
+       });
+     }
+   }) 
+ };
+
   //PUT - update an order in the DB
   editOrder = function(req, res) {
     order.findById(req.body.id, function (err, current) {

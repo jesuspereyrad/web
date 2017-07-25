@@ -48,7 +48,7 @@
         if(err) {
           console.log(err);
         } else {
-            mail({name: currentUser.name, number: order._id, date: order.date});
+            mail({name: currentUser.name, email: currentUser.email, number: order._id, date: order.date});
           }
         });
     });

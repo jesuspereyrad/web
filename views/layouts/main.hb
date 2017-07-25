@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ass2</title>
+  <title>Jesus Pizza</title>
   <link rel="stylesheet" type="text/css" href="static/css/custom.css">
   <link rel="stylesheet" type="text/css" href="static/css/pizza.css">
   <link rel="stylesheet" type="text/css" href="static/css/deals.css">
