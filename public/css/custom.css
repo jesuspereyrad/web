@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  min-height: 80vh;
 }
 
 .jumbotron {
@@ -7,8 +8,13 @@ body {
   color: #fff;
 }
 
+#home .footer {
+  position: absolute !important;
+}
+
 #pizza .jumbotron, #deals .jumbotron,
-#home .jumbotron, #re_order .jumbotron {
+#home .jumbotron, #re_order .jumbotron,
+#checkout .jumbotron {
   height: 400px;
   background-image: url('../img/logo3.jpg');
   -webkit-background-size: cover;

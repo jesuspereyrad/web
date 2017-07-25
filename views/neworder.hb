@@ -47,28 +47,28 @@
                 <h2>X Large</h2>
                 <h3>$20.00</h3>
                 <div class="item col-12">
-                  <img class="image img-fluid activeImage" id="xLarge" src="http:http://45.55.65.103/jesus/static/pizza.jpg">
+                  <img class="image img-fluid activeImage" id="xLarge" src="http://45.55.65.103/jesus/static/img/pizza.jpg">
                 </div>
               </div>
               <div onclick="selectSize(this)" value="15.00" class="col-12 col-md-3 size">
                 <h2>Large</h2>
                 <h3>$15.00</h3>
                 <div class="item col-10">
-                  <img class="image img-fluid" id="large" src=http:http://45.55.65.103/jesus/static/pizza.jpg">
+                  <img class="image img-fluid" id="large" src="http://45.55.65.103/jesus/static/img/pizza.jpg">
                 </div>
               </div>
               <div onclick="selectSize(this)" value="13.00" class="col-12 col-md-3 size">
                 <h2>Medium</h2>
                 <h3>$13.00</h3>
                 <div class="item col-8">
-                  <img class="image img-fluid" id="medium" src="http:http://45.55.65.103/jesus/static/pizza.jpg">
+                  <img class="image img-fluid" id="medium" src="http://45.55.65.103/jesus/static/img/pizza.jpg">
                 </div>
               </div>
               <div onclick="selectSize(this)" value="10.00" class="col-12 col-md-3 size">
                 <h2>Small</h2>
                 <h3>$10.00</h3>
                 <div class="item col-6">
-                  <img class="image img-fluid" id="small" src="http:http://45.55.65.103/jesus/static/pizza.jpg">
+                  <img class="image img-fluid" id="small" src="http://45.55.65.103/jesus/static/img/pizza.jpg">
                 </div>
               </div>
             </div>

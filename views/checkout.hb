@@ -20,7 +20,7 @@
       <tbody id="tableBody">
       </tbody>
     </table>
-      <input type='submit' onclick="return(submitOrder(event));" class='btn btn-primary col-6 col-md-3 offset-md-9'/>
+      <input type='submit' style="margin-bottom: 20px; text-align: center" onclick="return(submitOrder(event));" class='btn btn-primary col-6 col-md-2 offset-md-5'/>
     </form>
   </div>
 </div>
