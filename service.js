@@ -14,15 +14,15 @@
         return false;
     }
     orders.forEach(function(order) {
-      var now = new Date().getTime() / 1000 
-      var time =  now - order.date/1000
-      console.log(order.status);
+      var now = new Date().getTime();
+      var time =  (now/1000)- (order.date/1000);
       if(order.status[0] === "ACTIVE" && time > 120) {
         console.log("cant cancel");
       }
       var timeBeforeDelivered = waitTime();
+      console.log("time " +timeBeforeDelivered);
       if (order.status[0] === "ACTIVE" && (time >= timeBeforeDelivered)) {
-        console.log("hey");
+        console.log("delta " +time);
         deliverOrder(order, function(result, err) {
           console.log("bajamo");
           if (err) {
@@ -34,20 +34,7 @@
         });
       }
     });
-    // console.log("Last cancel");
   };
-
-  // function getUser(oneOrder) {
-  //   user.findById(oneOrder.user, function(err, currentUser) {
-  //     if(err) {
-  //       console.log(err);
-  //     } else {
-  //       console.log(currentUser);
-  //       return({currentUser});
-  //     }
-  //   })
-  // }
-
 
   function load(order) {
     var promise = Orders.findById(order._id, function(err, obj) {
@@ -81,7 +68,7 @@
   }
 
   function waitTime() {
-    return Math.floor(Math.random() * (300 - 180), 180);
+    return Math.floor(Math.random() * (300 - 180)) + 180;
   }
 
   function PizzaService() {
@@ -98,7 +85,7 @@
     // clearInterval(intervalObject);
   }
 
-  console.log('Pizza Service started to run: ', new Date());
+  console.log('Pizza Deamon is watching ', new Date());
 
 
   mongoose.connect(config.database, function(err, res) {
