@@ -4,6 +4,17 @@ body {
 
 .jumbotron {
   text-align: center;
+  color: #fff;
+}
+
+#pizza .jumbotron, #deals .jumbotron,
+#home .jumbotron, #re_order .jumbotron {
+  height: 400px;
+  background-image: url('../img/logo3.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .topbar ul {

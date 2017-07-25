@@ -2,8 +2,9 @@
 
 #new_order .jumbotron {
   min-height: 70vh !important;
-  background-color: #fff;
+  background-color: #fff !important;
   margin-top: 10px;
+  color: #000 !important;
 }
 
 #new_order .jumbotron > .box {

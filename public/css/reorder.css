@@ -9,6 +9,11 @@
   flex-direction: column;
 }
 
+#re_order .image {
+  width: 300;
+  height: 300;
+}
+
 #re_order .table tr {
   display: flex;
   width: 100%;

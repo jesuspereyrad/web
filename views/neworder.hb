@@ -4,7 +4,6 @@
   
   <div class="jumbotron col-10 offset-1">
 
-
     <div class="box">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
@@ -48,28 +47,28 @@
                 <h2>X Large</h2>
                 <h3>$20.00</h3>
                 <div class="item col-12">
-                  <img class="image img-fluid activeImage" id="xLarge" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid activeImage" id="xLarge" src="http:http://45.55.65.103/jesus/static/pizza.jpg">
                 </div>
               </div>
               <div onclick="selectSize(this)" value="15.00" class="col-12 col-md-3 size">
                 <h2>Large</h2>
                 <h3>$15.00</h3>
                 <div class="item col-10">
-                  <img class="image img-fluid" id="large" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid" id="large" src=http:http://45.55.65.103/jesus/static/pizza.jpg">
                 </div>
               </div>
               <div onclick="selectSize(this)" value="13.00" class="col-12 col-md-3 size">
                 <h2>Medium</h2>
                 <h3>$13.00</h3>
                 <div class="item col-8">
-                  <img class="image img-fluid" id="medium" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid" id="medium" src="http:http://45.55.65.103/jesus/static/pizza.jpg">
                 </div>
               </div>
               <div onclick="selectSize(this)" value="10.00" class="col-12 col-md-3 size">
                 <h2>Small</h2>
                 <h3>$10.00</h3>
                 <div class="item col-6">
-                  <img class="image img-fluid" id="small" src="https://www.placehold.it/300x300">
+                  <img class="image img-fluid" id="small" src="http:http://45.55.65.103/jesus/static/pizza.jpg">
                 </div>
               </div>
             </div>
@@ -101,7 +100,7 @@
         <div class="tab-pane" id="toppingTab" role="tabpanel">
           <div class="center">
             <h2>Select Topping</h2>
-            <div class='alert alert-danger hidden-sm-up' id="error" role='alert'><strong>Something wrong!</strong> Please select one cheese.</div>")
+            <div class='alert alert-danger hidden-sm-up' id="error" role='alert'><strong>Something wrong!</strong> Please select one cheese.</div>
             <form>
               <div class="col-8 offset-2">
                 <div class="row">
@@ -166,46 +165,66 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 <script>
-  var formData = new FormData();
+  init();
+  function init() {
+    var getRequest = function(method, father, url, func) {
+      var client = new XMLHttpRequest();
+      client.onreadystatechange = function() {
+        if(client.readyState === 4) {
+          var clientjs = JSON.parse(client.responseText);
+          var string = "";
+          i = 0;
+          clientjs.forEach(function (element) {
+            if(func == card && i == 0) {
+              element = [element, true, father];
+            }
+            i++;
+              string += func(element);
+          })
+          if(document.getElementById(father) != null) {
+            document.getElementById(father).innerHTML = string;
+          }
+          else {
+            (document.getElementsByClassName(father))[0].innerHTML = string;
+          }
+        }
+      }
+      client.open(method, url);
+      client.send();
+    }
+
+    var option = function(element) {
+      console.log(element.name);
+      return ("<option value=" + element._id + " name=' "+ element.name + " '>" + element.name + "</option>");
+    }
+
+    var card = function(element) {
+      if(element[1]) {
+        pizza[element[2]] = ({
+          type: "ingredient",
+          _id: element[0]._id,
+          name: element[0].name
+        });
+        return "<div class='card " + element[2] +"active' onclick='select(this)' id='" + element[0]._id + "' name='"+ element[0].name + "' style='width:20%;'><img class='card-img-top' src='" + element[0].url + "' alt='Card image cap' width=100% height=200px/> <div class='card-block'><h4 class='card-title'>" + element[0].name + "</h4> <p class='card-text'>" + element[0].description + "</p></div></div>"
+      } else {
+      return "<div class='card' onclick='select(this)' id='" + element._id + "' name='"+ element.name + "' style='width:20%;'><img class='card-img-top' src='" + element.url + "' alt='Card image cap' width=100% height=200px/> <div class='card-block'><h4 class='card-title'>" + element.name + "</h4> <p class='card-text'>" + element.description + "</p></div></div>"
+      }
+    }
+    getRequest("get", "crust", "./DB/ingredients/CRUST", card);
+    getRequest("get", "sauce", "./DB/ingredients/SAUCE", card);
+    getRequest("get", "cheese", "./DB/toppings/CHEESE", option);
+    getRequest("get", "meat", "./DB/toppings/MEAT", option);
+    getRequest("get", "vegetable", "./DB/toppings/VEGETABLE", option);
+  }
+
+  function setActive() {
+    console.log(document.getElementById("sauce").getElementsByClassName("card")[0].classList.add("crustactive"));
+    console.log(document.getElementById("crust").getElementsByClassName("card").classList.add("crustactive"));
+  }
+
   var pizza = {};
   var order = {};
   pizza.type = 'USER';
-  var getRequest = function(method, father, url, func) {
-    var client = new XMLHttpRequest();
-    client.onreadystatechange = function() {
-      if(client.readyState === 4) {
-        var clientjs = JSON.parse(client.responseText);
-        var string = "";
-        clientjs.forEach(function (element) {
-          string += func(element);
-        })
-        if(document.getElementById(father) != null) {
-          document.getElementById(father).innerHTML = string;
-        }
-        else {
-          (document.getElementsByClassName(father))[0].innerHTML = string;
-        }
-      }
-    }
-    client.open(method, url);
-    client.send();
-  }
-
-  var option = function(element) {
-    console.log(element.name);
-    return ("<option value=" + element._id + " name=' "+ element.name + " '>" + element.name + "</option>");
-  }
-
-  var card = function(element) {
-    console.log(element.name);
-    return "<div class='card' onclick='select(this)' id='" + element._id + "' name='"+ element.name + "' style='width:20%;'><img class='card-img-top' src='" + element.url + "' alt='Card image cap' width=100% height=200px/> <div class='card-block'><h4 class='card-title'>" + element.name + "</h4> <p class='card-text'>" + element.description + "</p></div></div>"
-  }
-
-  getRequest("get", "cheese", "./DB/toppings/CHEESE", option);
-  getRequest("get", "meat", "./DB/toppings/MEAT", option);
-  getRequest("get", "vegetable", "./DB/toppings/VEGETABLE", option);
-  getRequest("get", "crust", "./DB/ingredients/CRUST", card);
-  getRequest("get", "sauce", "./DB/ingredients/SAUCE", card);
 
   var selectSize = function(element, active) {
     var active = document.getElementsByClassName("activeImage");
@@ -315,13 +334,12 @@ function checkout() {
 
 <script>
   $('#next').click(function(){
+
     if($('.nav-tabs > .nav-item > .active').parent().next('li').length > 0) {
       if(($('.nav-tabs > .nav-item > .active').attr('href') == '#toppingTab')) {
         if(validate()) {
-          console.log("hola");
           $('.nav-tabs > .nav-item > .active').parent().next('li').find('a').trigger('click');
         } else {
-          console.log($('#error'));
           $('#error').removeClass("hidden-sm-up");
         }
       }
